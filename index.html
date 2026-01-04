@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Automated Viral Video Pipeline | Strategy Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 400px; }
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3F4F6;
+        }
+        .text-brand-primary { color: #7C3AED; }
+        .bg-brand-primary { background-color: #7C3AED; }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background-color: #E5E7EB;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        .ai-glow {
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+            border: 1px solid rgba(124, 58, 237, 0.4);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-violet-600 via-cyan-500 to-pink-600"></div>
+        <div class="container mx-auto px-6 py-12 text-center relative z-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-violet-100 text-violet-700 text-xs font-bold tracking-widest mb-4 uppercase">AI Automation Strategy</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
+                The Automated <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-500">Viral Video</span> Pipeline
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                A blueprint for mass-producing Shorts, cloning your likeness, and monetizing at speed using a fully autonomous AI stack.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10">
+
+        <!-- GEMINI API INTEGRATION: TREND & SCRIPT GENERATOR -->
+        <section class="md:col-span-2 bg-white rounded-xl shadow-lg p-8 ai-glow">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-800">✨ AI Trend & Script Lab</h2>
+                    <p class="text-gray-600">Generate viral hooks and scripts in seconds using Gemini 2.5 Flash.</p>
+                </div>
+                <button id="generateBtn" class="mt-4 md:mt-0 bg-brand-primary hover:bg-violet-700 text-white font-bold py-3 px-6 rounded-lg transition-all flex items-center gap-2">
+                    <span>✨ Generate Viral Script</span>
+                    <div id="loader" class="hidden animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <label class="block text-sm font-bold text-gray-700 uppercase">Topic / Niche</label>
+                    <input id="topicInput" type="text" placeholder="e.g. AI News, Space Facts, Stoicism..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 outline-none">
+                    
+                    <div id="scriptOutput" class="hidden bg-gray-50 p-6 rounded-lg border border-gray-200 h-64 overflow-y-auto">
+                        <h4 class="font-bold text-violet-600 mb-2">Generated Script:</h4>
+                        <div id="scriptContent" class="text-gray-700 whitespace-pre-wrap leading-relaxed italic"></div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <label class="block text-sm font-bold text-gray-700 uppercase">✨ Narrator Voice Preview (TTS)</label>
+                    <textarea id="ttsInput" placeholder="Paste script here to hear the AI narrator..." class="w-full p-3 border border-gray-300 rounded-lg h-32 outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+                    <button id="playBtn" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2">
+                        <span>🔊 Play Narrator Preview</span>
+                        <div id="ttsLoader" class="hidden animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>
+                    </button>
+                    <div id="statusMsg" class="text-xs text-center text-gray-500"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Existing Infographic Components -->
+        <section class="md:col-span-1 bg-white rounded-xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">The Automation Architecture</h3>
+            <div class="relative timeline-line space-y-8">
+                <div class="relative z-10 flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-violet-600 flex items-center justify-center text-white font-bold text-xl shadow-lg border-4 border-white">1</div>
+                    <div class="ml-6 bg-gray-50 p-4 rounded-lg shadow-sm w-full border-l-4 border-violet-400">
+                        <h4 class="font-bold text-gray-900">Trend Discovery Agent</h4>
+                        <p class="text-xs text-gray-500 mt-1">Gemini 2.5 Flash searches for spiking viral trends.</p>
+                    </div>
+                </div>
+                <div class="relative z-10 flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-cyan-500 flex items-center justify-center text-white font-bold text-xl shadow-lg border-4 border-white">2</div>
+                    <div class="ml-6 bg-gray-50 p-4 rounded-lg shadow-sm w-full border-l-4 border-cyan-400">
+                        <h4 class="font-bold text-gray-900">Script & Hook Gen</h4>
+                        <p class="text-xs text-gray-500 mt-1">LLM drafts retention-optimized 60s scripts.</p>
+                    </div>
+                </div>
+                <div class="relative z-10 flex items-center">
+                    <div class="w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center text-white font-bold text-xl shadow-lg border-4 border-white">3</div>
+                    <div class="ml-6 bg-gray-50 p-4 rounded-lg shadow-sm w-full border-l-4 border-pink-400">
+                        <h4 class="font-bold text-gray-900">Voice Synthesis</h4>
+                        <p class="text-xs text-gray-500 mt-1">Gemini TTS generates life-like narration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="md:col-span-1 bg-white rounded-xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">Old Way vs. New Way</h3>
+            <div class="chart-container">
+                <canvas id="radarChart"></canvas>
+            </div>
+        </section>
+
+        <section class="md:col-span-2 bg-white rounded-xl shadow-lg p-8">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800">The "Frequency Effect" on Views</h3>
+            <div class="chart-container w-full">
+                <canvas id="growthChart"></canvas>
+            </div>
+        </section>
+
+        <footer class="md:col-span-2 text-center py-8 border-t border-gray-200">
+            <p class="text-gray-500 text-sm">Powered by Gemini AI • Strategy Planning Engine • 2026</p>
+        </footer>
+    </main>
+
+    <script>
+        // API CONFIGURATION
+        const apiKey = ""; // Provided by runtime
+        const textModel = "gemini-2.5-flash-preview-09-2025";
+        const ttsModel = "gemini-2.5-flash-preview-tts";
+
+        // Exponential Backoff Fetch
+        async function fetchWithRetry(url, options, retries = 5, backoff = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                return await response.json();
+            } catch (error) {
+                if (retries > 0) {
+                    await new Promise(r => setTimeout(r, backoff));
+                    return fetchWithRetry(url, options, retries - 1, backoff * 2);
+                }
+                throw error;
+            }
+        }
+
+        // LLM SCRIPT GENERATION
+        document.getElementById('generateBtn').onclick = async () => {
+            const topic = document.getElementById('topicInput').value || "Viral AI Trends";
+            const btn = document.getElementById('generateBtn');
+            const loader = document.getElementById('loader');
+            const outputDiv = document.getElementById('scriptOutput');
+            const outputContent = document.getElementById('scriptContent');
+
+            btn.disabled = true;
+            loader.classList.remove('hidden');
+
+            try {
+                const result = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/${textModel}:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: `Write a 45-second high-energy YouTube Short script about ${topic}. Include a viral hook in the first 3 seconds, 3 fast-paced facts, and a call to action. Use an engaging, slightly edgy tone.` }] }],
+                        tools: [{ "google_search": {} }]
+                    })
+                });
+
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text || "No script generated.";
+                outputContent.innerText = text;
+                document.getElementById('ttsInput').value = text;
+                outputDiv.classList.remove('hidden');
+            } catch (err) {
+                alert("Failed to generate script. Please try again.");
+            } finally {
+                btn.disabled = false;
+                loader.classList.add('hidden');
+            }
+        };
+
+        // TTS AUDIO CONVERSION
+        document.getElementById('playBtn').onclick = async () => {
+            const text = document.getElementById('ttsInput').value;
+            if (!text) return alert("Please enter text to hear the preview.");
+
+            const btn = document.getElementById('playBtn');
+            const loader = document.getElementById('ttsLoader');
+            const status = document.getElementById('statusMsg');
+
+            btn.disabled = true;
+            loader.classList.remove('hidden');
+            status.innerText = "Synthesizing voice...";
+
+            try {
+                const result = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/${ttsModel}:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: `Say energetically: ${text}` }] }],
+                        generationConfig: {
+                            responseModalities: ["AUDIO"],
+                            speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Kore" } } }
+                        }
+                    })
+                });
+
+                const audioData = result.candidates[0].content.parts[0].inlineData.data;
+                playPCM(audioData);
+                status.innerText = "Playing...";
+            } catch (err) {
+                status.innerText = "TTS Error.";
+                console.error(err);
+            } finally {
+                btn.disabled = false;
+                loader.classList.add('hidden');
+            }
+        };
+
+        function playPCM(base64Data) {
+            const binaryString = atob(base64Data);
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+            for (let i = 0; i < len; i++) bytes[i] = binaryString.charCodeAt(i);
+            
+            // Standard PCM to WAV conversion for browser playback
+            const wavHeader = createWavHeader(len, 24000); // Assuming 24kHz sample rate from Gemini
+            const blob = new Blob([wavHeader, bytes], { type: 'audio/wav' });
+            const url = URL.createObjectURL(blob);
+            const audio = new Audio(url);
+            audio.play();
+        }
+
+        function createWavHeader(dataLength, sampleRate) {
+            const buffer = new ArrayBuffer(44);
+            const view = new DataView(buffer);
+            const writeString = (offset, string) => {
+                for (let i = 0; i < string.length; i++) view.setUint8(offset + i, string.charCodeAt(i));
+            };
+            writeString(0, 'RIFF');
+            view.setUint32(4, 36 + dataLength, true);
+            writeString(8, 'WAVE');
+            writeString(12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, 1, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * 2, true);
+            view.setUint16(32, 2, true);
+            view.setUint16(34, 16, true);
+            writeString(36, 'data');
+            view.setUint32(40, dataLength, true);
+            return buffer;
+        }
+
+        // CHART INITIALIZATION
+        function wrapLabel(str, maxLen = 16) {
+            if (str.length <= maxLen) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxLen) currentLine += ' ' + words[i];
+                else { lines.push(currentLine); currentLine = words[i]; }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const commonTooltip = {
+            callbacks: {
+                title: (items) => {
+                    const label = items[0].chart.data.labels[items[0].dataIndex];
+                    return Array.isArray(label) ? label.join(' ') : label;
+                }
+            }
+        };
+
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: [wrapLabel('Production Speed'), wrapLabel('Cost Efficiency'), wrapLabel('Volume Scalability'), wrapLabel('Trend Responsiveness'), wrapLabel('Creative Control')],
+                datasets: [{
+                    label: 'AI Pipeline',
+                    data: [95, 90, 100, 85, 60],
+                    backgroundColor: 'rgba(124, 58, 237, 0.2)',
+                    borderColor: '#7C3AED'
+                }]
+            },
+            options: { maintainAspectRatio: false, plugins: { tooltip: commonTooltip } }
+        });
+
+        const ctxGrowth = document.getElementById('growthChart').getContext('2d');
+        new Chart(ctxGrowth, {
+            type: 'line',
+            data: {
+                labels: ['M1', 'M2', 'M3', 'M4', 'M5', 'M6'],
+                datasets: [{
+                    label: 'Automated Growth',
+                    data: [5000, 25000, 85000, 250000, 600000, 1500000],
+                    borderColor: '#06B6D4',
+                    fill: true,
+                    backgroundColor: 'rgba(6, 182, 212, 0.1)'
+                }]
+            },
+            options: { maintainAspectRatio: false, plugins: { tooltip: commonTooltip } }
+        });
+    </script>
+</body>
+</html>
